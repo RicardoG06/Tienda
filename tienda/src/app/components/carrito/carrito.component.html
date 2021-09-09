@@ -110,6 +110,8 @@
             <!-- Shipping -->
             <h2 class="h4 mb-4">3. Metodos de envio</h2>
             <div class="custom-control custom-radio mb-3" *ngFor="let item of envios">
+              <!-- <p>{{item | json}}</p> -->
+              <p>{{item.titulo}}</p>
               <input (change)="calcular_total()" type="radio" class="custom-control-input" id="courier" name="shipping" checked name="precio_envio" [(ngModel)]="precio_envio" value="{{item.precio}}" >
               <label for="courier" class="custom-control-label d-flex align-items-center">
                 <span>

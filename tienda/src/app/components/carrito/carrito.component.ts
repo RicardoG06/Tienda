@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { GLOBAL } from 'src/app/services/GLOBAL';
 import { io } from "socket.io-client";
@@ -41,12 +41,6 @@ export class CarritoComponent implements OnInit {
       }
     );
 
-    this._guestService.get_Envios().subscribe(
-      response =>{
-        this.envios = response;
-        console.log(response);
-      }
-    )
    }
 
   ngOnInit(): void {
@@ -64,8 +58,17 @@ export class CarritoComponent implements OnInit {
       });
 
       var sidebar = new StickySidebar('.sidebar-sticky', {topSpacing: 20});
+
     });
     this.get_direccion_principal();
+
+    this._guestService.get_Envios().subscribe(
+      response =>{
+        this.envios = response;
+        console.log(response);
+        console.log("envio: ", this.envios)
+      }
+    )
   }
 
   get_direccion_principal(){
